@@ -1,6 +1,8 @@
 import reflex as rx
-from weblinks.Components.navbar import navbar
-from weblinks.links.links import links
+from weblinks.components.navbar import navbar
+from weblinks.components.footer import footer
+from weblinks.views.header.header import header
+from weblinks.views.links.links import links
 
 class State(rx.State):   
     pass
@@ -8,7 +10,9 @@ class State(rx.State):
 def index() -> rx.Component:
     return rx.vstack(
         navbar(),
-        links()
+        header(),
+        links(),
+        footer()
     )
     
 
