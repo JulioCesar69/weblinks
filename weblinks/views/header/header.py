@@ -3,7 +3,8 @@ import reflex as rx
 
 def header() -> rx.Component:
     return rx.vstack(
-        rx.avatar(name="Julio Cesar Dev", size="xl"),
+        rx.avatar(name="Julio Cesar", size="xl",
+        src="avatar.jpg"),
         rx.text("@juliocesardev"),
         rx.text("HOLA 👋🏼 MI NOMBRE ES JULIO CESAR"),
         rx.text("""Soy ingeniero de sistemas.
