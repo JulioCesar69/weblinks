@@ -8,5 +8,6 @@ def links() -> rx.Component:
         link_button("YouTube", "https://youtube.com/@mouredev"),
         link_button("YouTube (canal secundario)",
                     "https://youtube.com/@mouredevtv"),
-        link_button("Discord", "https://discrod.gg/mouredev")
+        link_button("Discord", "https://discrod.gg/mouredev"),
+        width="100%"
     )
