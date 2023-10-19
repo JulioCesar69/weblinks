@@ -26,8 +26,7 @@ BASE_STYLE = {
     }
 }    
 
-title_style = dict(
-    size="md",        
+title_style = dict(          
     width="100%",
     padding_top = Size.DEFAULT.value
 )
