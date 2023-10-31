@@ -1,8 +1,17 @@
 import reflex as rx
 from weblinks.styles.styles import Size as Size
+from weblinks.styles.colors import Color as Color
+from weblinks.styles.colors import TextColor as TextColor
 
-def info_text(title:str, body:str) -> rx.component:
+
+def info_text(title: str, body: str) -> rx.Component:
     return rx.box(
-        rx.span(title, font_weight="bold", color="blue"),
-        body, font_size=Size.MEDIUM.value
+        rx.span(
+            title,
+            font_weight="bold",
+            color=Color.PRIMARY.value
+        ),
+        f" {body}",
+        font_size=Size.MEDIUM.value,
+        color=TextColor.BODY.value
     )
