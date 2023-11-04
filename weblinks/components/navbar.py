@@ -8,7 +8,7 @@ def navbar() -> rx.Component:
     return rx.hstack(
         rx.box(
             rx.span("JulioCesar", color=Color.PRIMARY.value),
-            rx.span("dev", color=Color.SECONDARY.value),
+            rx.span("Dev", color=Color.SECONDARY.value),
             style=styles.navbar_title_style
         ),
         position="sticky",

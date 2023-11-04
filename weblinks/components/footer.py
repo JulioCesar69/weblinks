@@ -14,15 +14,15 @@ def footer() -> rx.Component:
         rx.link(           
             rx.box(
                 f"© 2014-{datetime.date.today().year} ",
-                rx.span("MoureDev by Brais Moure", color=Color.PRIMARY.value),
+                rx.span("Julio Cesar", color=Color.PRIMARY.value),
                 " v3."
             ),
-            href=const.MOUREDEV_URL,
+            href=const.GITHUB_URL,
             is_external=True,
             font_size=Size.MEDIUM.value
         ),
         rx.text(
-            "BUILDING SOFTWARE WITH ♥ FROM GALICIA TO THE WORLD.",
+            "BUILDING SOFTWARE WITH ♥ FROM TLAXIACO, OAXACA, MEXICO TO THE WORLD.",
             font_size=Size.MEDIUM.value,
             margin_top=Size.ZERO.value
         ),

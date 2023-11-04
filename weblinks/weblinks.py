@@ -32,5 +32,9 @@ def index() -> rx.Component:
 app = rx.App(
     style=styles.BASE_STYLE
 )
-app.add_page(index)
+app.add_page(
+    index,
+    title="JulioCesar | Desarrollo aplicaciones web",
+    description="Hola, mi nombre es Julio Cesar. Soy ingeniero en sistemas computacionales y desarrollador freelance full-stack.",
+    image="avatar.jpg")
 app.compile()
