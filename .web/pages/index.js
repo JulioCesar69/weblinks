@@ -2,6 +2,7 @@ import { Fragment, useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
+import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
 import { Avatar, Box, Button, Center, Flex, Heading, HStack, Image, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
@@ -87,22 +88,22 @@ export default function Component() {
   {`@juliocesardev`}
 </Text>
   <HStack spacing={`1.5em`}>
-  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
   <Image src={`icons/github.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.threads.net/@julls.cesar.ls`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://www.threads.net/@julls.cesar.ls`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
   <Image src={`icons/x.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.instagram.com/julls.cesar.ls/`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://www.instagram.com/julls.cesar.ls/`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
   <Image src={`icons/instagram.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.facebook.com/profile.php?id=100068432691199`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://www.facebook.com/profile.php?id=100068432691199`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
   <Image src={`icons/x.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://open.spotify.com/user/7rpxoauon4a98upsqnpgmg18o?si=fded7a30c2f94d16`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://open.spotify.com/user/7rpxoauon4a98upsqnpgmg18o?si=fded7a30c2f94d16`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
   <Image src={`icons/spotify.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.linkedin.com/in/julio-c%C3%A9sar-l%C3%B3pez-sanjuan-639753297/`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://www.linkedin.com/in/julio-c%C3%A9sar-l%C3%B3pez-sanjuan-639753297/`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
   <Image src={`icons/linkedin.svg`} sx={{"width": "1.5em"}}/>
 </Link>
 </HStack>
@@ -142,8 +143,8 @@ export default function Component() {
   <Heading sx={{"width": "100%", "paddingTop": "1em", "fontSize": "1.5em", "color": "#F1F2F4", "fontFamily": "Poppins-Medium"}}>
   {`Proyectos`}
 </Heading>
-  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "_hover": {"backgroundColor": "#087ec4"}}}>
+  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "Hover": {"backgroundColor": "#087ec4"}}}>
   <HStack>
   <Image src={`icons/tienda.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
@@ -157,8 +158,8 @@ export default function Component() {
 </HStack>
 </Button>
 </Link>
-  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "_hover": {"backgroundColor": "#087ec4"}}}>
+  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "Hover": {"backgroundColor": "#087ec4"}}}>
   <HStack>
   <Image src={`icons/inventario.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
@@ -172,8 +173,8 @@ export default function Component() {
 </HStack>
 </Button>
 </Link>
-  <Link as={NextLink} href={`https://discord.gg/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "_hover": {"backgroundColor": "#087ec4"}}}>
+  <Link as={NextLink} href={`https://discord.gg/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "Hover": {"backgroundColor": "#087ec4"}}}>
   <HStack>
   <Image src={`icons/menu.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
@@ -192,7 +193,7 @@ export default function Component() {
 </Center>
   <VStack spacing={`1em`} sx={{"marginBottom": "2em", "paddingBottom": "2em", "color": "#A3ABB2"}}>
   <Image src={`logo.png`} sx={{"height": "4em"}}/>
-  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"fontSize": "0.8em", "textDecoration": "none", "_hover": {}}}>
+  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"fontSize": "0.8em", "textDecoration": "none", "Hover": {}}}>
   <Box>
   {`© 2014-2023 `}
   <Text as={`span`} sx={{"color": "#14A1F0"}}>
