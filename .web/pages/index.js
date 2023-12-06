@@ -183,7 +183,7 @@ export default function Component() {
 </VStack>
 </Center>
   <VStack spacing={`1em`} sx={{"marginBottom": "2em", "paddingBottom": "2em", "paddingX": "2em", "color": "#A3ABB2"}}>
-  <Image alt={`Logotipo.`} src={`logo.png`} sx={{"height": "4em", "weight": "4em"}}/>
+  <Image alt={`Logotipo.`} src={`icons/logo.png`} sx={{"height": "4em", "weight": "4em"}}/>
   <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"fontSize": "0.8em", "textDecoration": "none", "Hover": {}}}>
   <Box>
   {`© 2018-2023 `}

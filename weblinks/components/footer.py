@@ -7,7 +7,7 @@ from weblinks.styles.colors import Color, TextColor
 def footer() -> rx.Component:
     return rx.vstack(
         rx.image(
-            src="logo.png",
+            src="icons/logo.png",
             height=Size.VERY_BIG.value,
             weight=Size.VERY_BIG.value,
             alt="Logotipo."
