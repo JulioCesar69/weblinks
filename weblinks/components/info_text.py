@@ -1,7 +1,6 @@
 import reflex as rx
-from weblinks.styles.styles import Size as Size
-from weblinks.styles.colors import Color as Color
-from weblinks.styles.colors import TextColor as TextColor
+from weblinks.styles.styles import Size 
+from weblinks.styles.colors import Color, TextColor
 
 
 def info_text(title: str, body: str) -> rx.Component:

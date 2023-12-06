@@ -1,11 +1,10 @@
 import reflex as rx
+import datetime
+import weblinks.constants as const
+from weblinks.styles.styles import Size
+from weblinks.styles.colors import Color, TextColor
 from weblinks.components.link_icon import link_icon
 from weblinks.components.info_text import info_text
-from weblinks.styles.styles import Size as Size
-from weblinks.styles.colors import Color as Color
-from weblinks.styles.colors import TextColor as TextColor
-import weblinks.constants as const
-import datetime
 
 def header() -> rx.Component:
     return rx.vstack(
@@ -33,27 +32,33 @@ def header() -> rx.Component:
                 rx.hstack(                    
                     link_icon(
                         "icons/github.svg",
-                        const.GITHUB_URL
+                        const.GITHUB_URL,
+                        "GITHUB"
                     ),
                     link_icon(
                         "icons/x.svg",
-                        const.THREADS_URL
+                        const.THREADS_URL,
+                        "Twitter/x"
                     ),
                     link_icon(
                         "icons/instagram.svg",
-                        const.INSTAGRAM_URL
+                        const.INSTAGRAM_URL,
+                        "instagram"
                     ),
                     link_icon(
-                        "icons/x.svg",
-                        const.FACEBOOK_URL
+                        "icons/facebook.png",
+                        const.FACEBOOK_URL,
+                        "facebook"
                     ),
                     link_icon(
                         "icons/spotify.svg",
-                        const.SPOTIFY_URL
+                        const.SPOTIFY_URL,
+                        "spotify"
                     ),
                     link_icon(
                         "icons/linkedin.svg",
-                        const.LINKEDIN_URL
+                        const.LINKEDIN_URL,
+                        "linkedin"
                     ),
                     spacing=Size.LARGE.value
                 ),

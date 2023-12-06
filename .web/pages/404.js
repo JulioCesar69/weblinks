@@ -4,8 +4,6 @@ import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, prev
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
-import { Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text } from "@chakra-ui/react"
-import { getEventURL } from "/utils/state.js"
 import Error from "next/error"
 import { useClientSideRouting } from "/utils/client_side_routing"
 import NextHead from "next/head"
@@ -13,7 +11,6 @@ import NextHead from "next/head"
 
 
 export default function Component() {
-  const state = useContext(StateContext)
   const router = useRouter()
   const [ colorMode, toggleColorMode ] = useContext(ColorModeContext)
   const focusRef = useRef();
@@ -41,31 +38,6 @@ export default function Component() {
 
   return (
     <Fragment>
-  <Fragment>
-  {isTrue(connectError !== null) ? (
-  <Fragment>
-  <Modal isOpen={connectError !== null}>
-  <ModalOverlay>
-  <ModalContent>
-  <ModalHeader>
-  {`Connection Error`}
-</ModalHeader>
-  <ModalBody>
-  <Text>
-  {`Cannot connect to server: `}
-  {(connectError !== null) ? connectError.message : ''}
-  {`. Check if server is reachable at `}
-  {getEventURL().href}
-</Text>
-</ModalBody>
-</ModalContent>
-</ModalOverlay>
-</Modal>
-</Fragment>
-) : (
-  <Fragment/>
-)}
-</Fragment>
   <Fragment>
   {isTrue(routeNotFound) ? (
   <Fragment>

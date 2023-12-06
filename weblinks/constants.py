@@ -7,6 +7,8 @@ SPOTIFY_URL = "https://open.spotify.com/user/7rpxoauon4a98upsqnpgmg18o?si=fded7a
 LINKEDIN_URL = "https://www.linkedin.com/in/julio-c%C3%A9sar-l%C3%B3pez-sanjuan-639753297/"
 
 # Proyectos
+
+MENU_DIGITAL = "https://greenbull.netlify.app/"
 TWITCH_URL = "https://twitch.tv/mouredev"
 YOUTUBE_URL = "https://youtube.com/@mouredev"
 YOUTUBE_SECONDARY_URL = "https://youtube.com/@mouredevtv"
@@ -14,5 +16,4 @@ DISCORD_URL = "https://discord.gg/mouredev"
 CODE_CHALLENGES_URL = "https://retosdeprogramacion.com"
 
 # Contacto
-MYPUBLICINBOX_URL = "https://mypublicinbox.com/mouredev"
-EMAIL = "braismoure@mouredev.com"
+EMAIL = "juliocesarlpzsan@gmail.com"

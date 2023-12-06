@@ -1,7 +1,7 @@
 import reflex as rx
 import weblinks.styles.styles as styles
-from weblinks.styles.styles import Size as Size
-from weblinks.styles.colors import Color as Color
+from weblinks.styles.styles import Size
+from weblinks.styles.colors import Color
 
 
 def navbar() -> rx.Component:

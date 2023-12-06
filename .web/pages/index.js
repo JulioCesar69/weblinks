@@ -4,15 +4,13 @@ import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, prev
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
-import { Avatar, Box, Button, Center, Flex, Heading, HStack, Image, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, VStack } from "@chakra-ui/react"
-import { getEventURL } from "/utils/state.js"
+import { Avatar, Box, Button, Center, Flex, Heading, HStack, Image, Link, Spacer, Text, VStack } from "@chakra-ui/react"
 import NextLink from "next/link"
 import NextHead from "next/head"
 
 
 
 export default function Component() {
-  const state = useContext(StateContext)
   const router = useRouter()
   const [ colorMode, toggleColorMode ] = useContext(ColorModeContext)
   const focusRef = useRef();
@@ -39,34 +37,9 @@ export default function Component() {
 
   return (
     <Fragment>
-  <Fragment>
-  {isTrue(connectError !== null) ? (
-  <Fragment>
-  <Modal isOpen={connectError !== null}>
-  <ModalOverlay>
-  <ModalContent>
-  <ModalHeader>
-  {`Connection Error`}
-</ModalHeader>
-  <ModalBody>
-  <Text>
-  {`Cannot connect to server: `}
-  {(connectError !== null) ? connectError.message : ''}
-  {`. Check if server is reachable at `}
-  {getEventURL().href}
-</Text>
-</ModalBody>
-</ModalContent>
-</ModalOverlay>
-</Modal>
-</Fragment>
-) : (
-  <Fragment/>
-)}
-</Fragment>
   <Box>
   <HStack sx={{"position": "sticky", "bg": "#171F26", "paddingX": "2em", "paddingY": "1em", "zIndex": "999", "top": "0"}}>
-  <Box sx={{"fontFamily": "Comfortaa-Medium", "fontSize": "1.5em"}}>
+  <Box sx={{"fontFamily": "Comfortaa", "fontWeight": "500", "fontSize": "1.5em"}}>
   <Text as={`span`} sx={{"color": "#14A1F0"}}>
   {`JulioCesar`}
 </Text>
@@ -81,7 +54,7 @@ export default function Component() {
   <HStack spacing={`1em`}>
   <Avatar name={`Julio Cesar`} size={`xl`} src={`avatar.jpg`} sx={{"color": "#C3C7CB", "bg": "#171F26", "padding": "2px", "border": "4px", "borderColor": "#14A1F0"}}/>
   <VStack alignItems={`start`}>
-  <Heading size={`lg`} sx={{"color": "#F1F2F4", "fontFamily": "Poppins-Medium"}}>
+  <Heading size={`lg`} sx={{"color": "#F1F2F4", "fontFamily": "Poppins", "fontWeight": "500"}}>
   {`Julio César`}
 </Heading>
   <Text sx={{"marginTop": "0px !important", "color": "#14A1F0"}}>
@@ -89,22 +62,22 @@ export default function Component() {
 </Text>
   <HStack spacing={`1.5em`}>
   <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
-  <Image src={`icons/github.svg`} sx={{"width": "1.5em"}}/>
+  <Image alt={`GITHUB`} src={`icons/github.svg`} sx={{"width": "1.5em"}}/>
 </Link>
   <Link as={NextLink} href={`https://www.threads.net/@julls.cesar.ls`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
-  <Image src={`icons/x.svg`} sx={{"width": "1.5em"}}/>
+  <Image alt={`Twitter/x`} src={`icons/x.svg`} sx={{"width": "1.5em"}}/>
 </Link>
   <Link as={NextLink} href={`https://www.instagram.com/julls.cesar.ls/`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
-  <Image src={`icons/instagram.svg`} sx={{"width": "1.5em"}}/>
+  <Image alt={`instagram`} src={`icons/instagram.svg`} sx={{"width": "1.5em"}}/>
 </Link>
   <Link as={NextLink} href={`https://www.facebook.com/profile.php?id=100068432691199`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
-  <Image src={`icons/x.svg`} sx={{"width": "1.5em"}}/>
+  <Image alt={`facebook`} src={`icons/facebook.png`} sx={{"width": "1.5em"}}/>
 </Link>
   <Link as={NextLink} href={`https://open.spotify.com/user/7rpxoauon4a98upsqnpgmg18o?si=fded7a30c2f94d16`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
-  <Image src={`icons/spotify.svg`} sx={{"width": "1.5em"}}/>
+  <Image alt={`spotify`} src={`icons/spotify.svg`} sx={{"width": "1.5em"}}/>
 </Link>
   <Link as={NextLink} href={`https://www.linkedin.com/in/julio-c%C3%A9sar-l%C3%B3pez-sanjuan-639753297/`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
-  <Image src={`icons/linkedin.svg`} sx={{"width": "1.5em"}}/>
+  <Image alt={`linkedin`} src={`icons/linkedin.svg`} sx={{"width": "1.5em"}}/>
 </Link>
 </HStack>
 </VStack>
@@ -140,18 +113,18 @@ export default function Component() {
 </Text>
 </VStack>
   <VStack spacing={`1em`} sx={{"width": "100%"}}>
-  <Heading sx={{"width": "100%", "paddingTop": "1em", "fontSize": "1.5em", "color": "#F1F2F4", "fontFamily": "Poppins-Medium"}}>
+  <Heading sx={{"width": "100%", "paddingTop": "1em", "fontSize": "1.5em", "color": "#F1F2F4", "fontFamily": "Poppins", "fontWeight": "500"}}>
   {`Proyectos`}
 </Heading>
   <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "Hover": {"backgroundColor": "#087ec4"}}}>
-  <HStack>
-  <Image src={`icons/tienda.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
-  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
-  <Text sx={{"fontFamily": "Poppins-Medium", "fontSize": "1em", "color": "#F1F2F4"}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <HStack sx={{"width": "100%"}}>
+  <Image alt={`Tienda virtual PC BOX`} src={`icons/tienda.png`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
+  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
+  <Text sx={{"fontFamily": "Poppins", "fontWeight": "500", "fontSize": "1em", "color": "#F1F2F4"}}>
   {`Tienda virtual PC BOX`}
 </Text>
-  <Text sx={{"fontSize": "0.8em", "color": "#C3C7CB"}}>
+  <Text sx={{"fontWeight": "300", "fontSize": "0.8em", "color": "#C3C7CB"}}>
   {`Sistema administrativo y tienda online`}
 </Text>
 </VStack>
@@ -159,30 +132,48 @@ export default function Component() {
 </Button>
 </Link>
   <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "Hover": {"backgroundColor": "#087ec4"}}}>
-  <HStack>
-  <Image src={`icons/inventario.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
-  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
-  <Text sx={{"fontFamily": "Poppins-Medium", "fontSize": "1em", "color": "#F1F2F4"}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <HStack sx={{"width": "100%"}}>
+  <Image alt={`Invenratio RMS`} src={`icons/inventario.png`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
+  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
+  <Text sx={{"fontFamily": "Poppins", "fontWeight": "500", "fontSize": "1em", "color": "#F1F2F4"}}>
   {`Invenratio RMS`}
 </Text>
-  <Text sx={{"fontSize": "0.8em", "color": "#C3C7CB"}}>
+  <Text sx={{"fontWeight": "300", "fontSize": "0.8em", "color": "#C3C7CB"}}>
   {`Sistema de inventario a través de código  QR`}
 </Text>
 </VStack>
 </HStack>
 </Button>
 </Link>
-  <Link as={NextLink} href={`https://discord.gg/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "display": "block", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "Hover": {"backgroundColor": "#087ec4"}}}>
-  <HStack>
-  <Image src={`icons/menu.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
-  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em"}}>
-  <Text sx={{"fontFamily": "Poppins-Medium", "fontSize": "1em", "color": "#F1F2F4"}}>
+  <Link as={NextLink} href={`https://greenbull.netlify.app/`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <HStack sx={{"width": "100%"}}>
+  <Image alt={`Menú digital Green Bull coffee & Pub`} src={`icons/menu.png`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
+  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
+  <Text sx={{"fontFamily": "Poppins", "fontWeight": "500", "fontSize": "1em", "color": "#F1F2F4"}}>
   {`Menú digital Green Bull coffee & Pub`}
 </Text>
-  <Text sx={{"fontSize": "0.8em", "color": "#C3C7CB"}}>
+  <Text sx={{"fontWeight": "300", "fontSize": "0.8em", "color": "#C3C7CB"}}>
   {`Página web para mostrar el menú y promociones`}
+</Text>
+</VStack>
+</HStack>
+</Button>
+</Link>
+  <Heading sx={{"width": "100%", "paddingTop": "1em", "fontSize": "1.5em", "color": "#F1F2F4", "fontFamily": "Poppins", "fontWeight": "500"}}>
+  {`Contacto`}
+</Heading>
+  <Link as={NextLink} href={`mailto:juliocesarlpzsan@gmail.com`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <HStack sx={{"width": "100%"}}>
+  <Image alt={`Email`} src={`icons/email.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
+  <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
+  <Text sx={{"fontFamily": "Poppins", "fontWeight": "500", "fontSize": "1em", "color": "#F1F2F4"}}>
+  {`Email`}
+</Text>
+  <Text sx={{"fontWeight": "300", "fontSize": "0.8em", "color": "#C3C7CB"}}>
+  {`juliocesarlpzsan@gmail.com`}
 </Text>
 </VStack>
 </HStack>
@@ -191,11 +182,11 @@ export default function Component() {
 </VStack>
 </VStack>
 </Center>
-  <VStack spacing={`1em`} sx={{"marginBottom": "2em", "paddingBottom": "2em", "color": "#A3ABB2"}}>
-  <Image src={`logo.png`} sx={{"height": "4em"}}/>
+  <VStack spacing={`1em`} sx={{"marginBottom": "2em", "paddingBottom": "2em", "paddingX": "2em", "color": "#A3ABB2"}}>
+  <Image alt={`Logotipo.`} src={`logo.png`} sx={{"height": "4em", "weight": "4em"}}/>
   <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"fontSize": "0.8em", "textDecoration": "none", "Hover": {}}}>
   <Box>
-  {`© 2014-2023 `}
+  {`© 2018-2023 `}
   <Text as={`span`} sx={{"color": "#14A1F0"}}>
   {`Julio Cesar`}
 </Text>

@@ -1,19 +1,20 @@
 import reflex as rx
 import datetime
 import weblinks.constants as const
-from weblinks.styles.styles import Size as Size
-from weblinks.styles.colors import Color as Color
-from weblinks.styles.colors import TextColor as TextColor
+from weblinks.styles.styles import Size
+from weblinks.styles.colors import Color, TextColor
 
 def footer() -> rx.Component:
     return rx.vstack(
         rx.image(
             src="logo.png",
-            height=Size.VERY_BIG.value
+            height=Size.VERY_BIG.value,
+            weight=Size.VERY_BIG.value,
+            alt="Logotipo."
         ),
         rx.link(           
             rx.box(
-                f"© 2014-{datetime.date.today().year} ",
+                f"© 2018-{datetime.date.today().year} ",
                 rx.span("Julio Cesar", color=Color.PRIMARY.value),
                 " v3."
             ),
@@ -28,6 +29,7 @@ def footer() -> rx.Component:
         ),
         margin_bottom=Size.BIG.value,
         padding_bottom=Size.BIG.value,
+        padding_x=Size.BIG.value,
         spacing=Size.DEFAULT.value,
         color=TextColor.FOOTER.value
     )
