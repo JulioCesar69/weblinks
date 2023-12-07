@@ -2,7 +2,6 @@ import { Fragment, useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
-import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
 import { Avatar, Box, Button, Center, Flex, Heading, HStack, Image, Link, Spacer, Text, VStack } from "@chakra-ui/react"
 import NextLink from "next/link"
@@ -61,22 +60,22 @@ export default function Component() {
   {`@juliocesardev`}
 </Text>
   <HStack spacing={`1.5em`}>
-  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
+  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
   <Image alt={`GITHUB`} src={`icons/github.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.threads.net/@julls.cesar.ls`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
+  <Link as={NextLink} href={`https://www.threads.net/@julls.cesar.ls`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
   <Image alt={`Twitter/x`} src={`icons/x.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.instagram.com/julls.cesar.ls/`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
+  <Link as={NextLink} href={`https://www.instagram.com/julls.cesar.ls/`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
   <Image alt={`instagram`} src={`icons/instagram.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.facebook.com/profile.php?id=100068432691199`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
+  <Link as={NextLink} href={`https://www.facebook.com/profile.php?id=100068432691199`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
   <Image alt={`facebook`} src={`icons/facebook.png`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://open.spotify.com/user/7rpxoauon4a98upsqnpgmg18o?si=fded7a30c2f94d16`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
+  <Link as={NextLink} href={`https://open.spotify.com/user/7rpxoauon4a98upsqnpgmg18o?si=fded7a30c2f94d16`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
   <Image alt={`spotify`} src={`icons/spotify.svg`} sx={{"width": "1.5em"}}/>
 </Link>
-  <Link as={NextLink} href={`https://www.linkedin.com/in/julio-c%C3%A9sar-l%C3%B3pez-sanjuan-639753297/`} isExternal={true} sx={{"textDecoration": "none", "Hover": {}}}>
+  <Link as={NextLink} href={`https://www.linkedin.com/in/julio-c%C3%A9sar-l%C3%B3pez-sanjuan-639753297/`} isExternal={true} sx={{"textDecoration": "none", "_hover": {}}}>
   <Image alt={`linkedin`} src={`icons/linkedin.svg`} sx={{"width": "1.5em"}}/>
 </Link>
 </HStack>
@@ -90,21 +89,11 @@ export default function Component() {
   {`  años de experiencia`}
 </Box>
   <Spacer/>
-  <Box sx={{"fontSize": "0.8em", "color": "#C3C7CB"}}>
-  <Text as={`span`} sx={{"fontWeight": "bold", "color": "#14A1F0"}}>
-  {`100+`}
-</Text>
-  {` aplicaciones creadas`}
-</Box>
-  <Spacer/>
-  <Box sx={{"fontSize": "0.8em", "color": "#C3C7CB"}}>
-  <Text as={`span`} sx={{"fontWeight": "bold", "color": "#14A1F0"}}>
-  {`1M+`}
-</Text>
-  {` seguidores`}
-</Box>
+  <Link as={NextLink} href={`files/cv.pdf`} sx={{"fontSize": "0.8em", "fontWeight": "bold", "color": "#14A1F0", "textDecoration": "none", "_hover": {}}}>
+  {`Descargar CV`}
+</Link>
 </Flex>
-  <Text sx={{"fontSize": "1em", "color": "#C3C7CB"}}>
+  <Text sx={{"fontSize": "1em", "color": "#C3C7CB", "textAlign": "justify"}}>
   {`Soy egresado de la carrera de Ingeniería en Sistemas Computacionales
                     en el Instituto Tecnológico de Tlaxiaco. Trabajo como freelance full-stack developer.
                     Estoy interesado en impulsar el desarrollo tecnológico en la región mixteca 
@@ -116,8 +105,8 @@ export default function Component() {
   <Heading sx={{"width": "100%", "paddingTop": "1em", "fontSize": "1.5em", "color": "#F1F2F4", "fontFamily": "Poppins", "fontWeight": "500"}}>
   {`Proyectos`}
 </Heading>
-  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "_hover": {"backgroundColor": "#14A1F0"}}}>
   <HStack sx={{"width": "100%"}}>
   <Image alt={`Tienda virtual PC BOX`} src={`icons/tienda.png`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
@@ -131,8 +120,8 @@ export default function Component() {
 </HStack>
 </Button>
 </Link>
-  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <Link as={NextLink} href={`https://twitch.tv/mouredev`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "_hover": {"backgroundColor": "#14A1F0"}}}>
   <HStack sx={{"width": "100%"}}>
   <Image alt={`Invenratio RMS`} src={`icons/inventario.png`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
@@ -146,8 +135,8 @@ export default function Component() {
 </HStack>
 </Button>
 </Link>
-  <Link as={NextLink} href={`https://greenbull.netlify.app/`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <Link as={NextLink} href={`https://greenbull.netlify.app/`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "_hover": {"backgroundColor": "#14A1F0"}}}>
   <HStack sx={{"width": "100%"}}>
   <Image alt={`Menú digital Green Bull coffee & Pub`} src={`icons/menu.png`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
@@ -164,8 +153,8 @@ export default function Component() {
   <Heading sx={{"width": "100%", "paddingTop": "1em", "fontSize": "1.5em", "color": "#F1F2F4", "fontFamily": "Poppins", "fontWeight": "500"}}>
   {`Contacto`}
 </Heading>
-  <Link as={NextLink} href={`mailto:juliocesarlpzsan@gmail.com`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "Hover": {}}}>
-  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "Hover": {"backgroundColor": "#14A1F0"}}}>
+  <Link as={NextLink} href={`mailto:juliocesarlpzsan@gmail.com`} isExternal={true} sx={{"width": "100%", "textDecoration": "none", "_hover": {}}}>
+  <Button sx={{"width": "100%", "height": "100%", "padding": "0.5em", "borderRadius": "1em", "color": "#F1F2F4", "backgroundColor": "#171F26", "whiteSpace": "normal", "textAlign": "start", "_hover": {"backgroundColor": "#14A1F0"}}}>
   <HStack sx={{"width": "100%"}}>
   <Image alt={`Email`} src={`icons/email.svg`} sx={{"width": "1.5em", "height": "1.5em", "margin": "0.8em"}}/>
   <VStack alignItems={`start`} spacing={`0.5em`} sx={{"paddingY": "0.5em", "paddingRight": "0.5em"}}>
@@ -183,8 +172,8 @@ export default function Component() {
 </VStack>
 </Center>
   <VStack spacing={`1em`} sx={{"marginBottom": "2em", "paddingBottom": "2em", "paddingX": "2em", "color": "#A3ABB2"}}>
-  <Image alt={`Logotipo.`} src={`icons/logo.png`} sx={{"height": "4em", "weight": "4em"}}/>
-  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"fontSize": "0.8em", "textDecoration": "none", "Hover": {}}}>
+  <Image alt={`Logotipo.`} src={`icons/logo.png`} sx={{"width": "180px", "height": "auto"}}/>
+  <Link as={NextLink} href={`https://github.com/juliocesar69`} isExternal={true} sx={{"fontSize": "0.8em", "textDecoration": "none", "_hover": {}}}>
   <Box>
   {`© 2018-2023 `}
   <Text as={`span`} sx={{"color": "#14A1F0"}}>

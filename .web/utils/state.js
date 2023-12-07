@@ -12,9 +12,6 @@ import { initialEvents } from "utils/context.js"
 const EVENTURL = env.EVENT
 const UPLOADURL = env.UPLOAD
 
-// These hostnames indicate that the backend and frontend are reachable via the same domain.
-const SAME_DOMAIN_HOSTNAMES = ["localhost", "0.0.0.0", "::", "0:0:0:0:0:0:0:0"]
-
 // Global variable to hold the token.
 let token;
 
@@ -31,11 +28,6 @@ export const refs = {};
 let event_processing = false
 // Array holding pending events to be processed.
 const event_queue = [];
-
-// Pending upload promises, by id
-const upload_controllers = {};
-// Upload files state by id
-export const upload_files = {};
 
 /**
  * Generate a UUID (Used for session tokens).
@@ -82,13 +74,12 @@ export const getToken = () => {
 export const getEventURL = () => {
   // Get backend URL object from the endpoint.
   const endpoint = new URL(EVENTURL);
-  if (SAME_DOMAIN_HOSTNAMES.includes(endpoint.hostname)) {
-    // Use the frontend domain to access the backend
+  if (endpoint.hostname === "localhost") {
+    // If the backend URL references localhost, and the frontend is not on localhost,
+    // then use the frontend host.
     const frontend_hostname = window.location.hostname;
-    endpoint.hostname = frontend_hostname;
-    if (window.location.protocol === "https:" && endpoint.protocol === "ws:") {
-      endpoint.protocol = "wss:";
-      endpoint.port = "";  // Assume websocket is on https port via load balancer.
+    if (frontend_hostname !== "localhost") {
+      endpoint.hostname = frontend_hostname;
     }
   }
   return endpoint
@@ -240,22 +231,14 @@ export const applyEvent = async (event, socket) => {
 /**
  * Send an event to the server via REST.
  * @param event The current event.
- * @param socket The socket object to send the response event(s) on.
+ * @param state The state with the event queue.
  *
  * @returns Whether the event was sent.
  */
-export const applyRestEvent = async (event, socket) => {
+export const applyRestEvent = async (event) => {
   let eventSent = false;
   if (event.handler == "uploadFiles") {
-    // Start upload, but do not wait for it, which would block other events.
-    uploadFiles(
-      event.name,
-      event.payload.files,
-      event.payload.upload_id,
-      event.payload.on_upload_progress,
-      socket
-    );
-    return false;
+    eventSent = await uploadFiles(event.name, event.payload.files);
   }
   return eventSent;
 };
@@ -296,7 +279,7 @@ export const processEvent = async (
   let eventSent = false
   // Process events with handlers via REST and all others via websockets.
   if (event.handler) {
-    eventSent = await applyRestEvent(event, socket);
+    eventSent = await applyRestEvent(event);
   } else {
     eventSent = await applyEvent(event, socket);
   }
@@ -360,86 +343,50 @@ export const connect = async (
  *
  * @param state The state to apply the delta to.
  * @param handler The handler to use.
- * @param upload_id The upload id to use.
- * @param on_upload_progress The function to call on upload progress.
- * @param socket the websocket connection
  *
- * @returns The response from posting to the UPLOADURL endpoint.
+ * @returns Whether the files were uploaded.
  */
-export const uploadFiles = async (handler, files, upload_id, on_upload_progress, socket) => {
+export const uploadFiles = async (handler, files) => {
   // return if there's no file to upload
   if (files.length == 0) {
     return false;
   }
 
-  if (upload_controllers[upload_id]) {
-    console.log("Upload already in progress for ", upload_id)
-    return false;
-  }
-
-  let resp_idx = 0;
-  const eventHandler = (progressEvent) => {
-    // handle any delta / event streamed from the upload event handler
-    const chunks = progressEvent.event.target.responseText.trim().split("\n")
-    chunks.slice(resp_idx).map((chunk) => {
-      try {
-        socket._callbacks.$event.map((f) => {
-          f(chunk)
-        })
-        resp_idx += 1
-      } catch (e) {
-        console.log("Error parsing chunk", chunk, e)
-        return
-      }
-    })
-  }
-
-  const controller = new AbortController()
-  const config = {
-    headers: {
-      "Reflex-Client-Token": getToken(),
-      "Reflex-Event-Handler": handler,
-    },
-    signal: controller.signal,
-    onDownloadProgress: eventHandler,
-  }
-  if (on_upload_progress) {
-    config["onUploadProgress"] = on_upload_progress
-  }
+  const headers = {
+    "Content-Type": files[0].type,
+  };
   const formdata = new FormData();
 
   // Add the token and handler to the file name.
-  files.forEach((file) => {
+  for (let i = 0; i < files.length; i++) {
     formdata.append(
       "files",
-      file,
-      file.path || file.name
+      files[i],
+      getToken() + ":" + handler + ":" + files[i].name
     );
-  })
+  }
 
   // Send the file to the server.
-  upload_controllers[upload_id] = controller
-
-  try {
-    return await axios.post(UPLOADURL, formdata, config)
-  } catch (error) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.log(error.response.data);
-    } else if (error.request) {
-      // The request was made but no response was received
-      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-      // http.ClientRequest in node.js
-      console.log(error.request);
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      console.log(error.message);
-    }
-    return false;
-  } finally {
-    delete upload_controllers[upload_id]
-  }
+  await axios.post(UPLOADURL, formdata, headers)
+    .then(() => { return true; })
+    .catch(
+      error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log(error.message);
+        }
+        return false;
+      }
+    )
 };
 
 /**
@@ -622,7 +569,7 @@ export const getRefValues = (refs) => {
     return;
   }
   // getAttribute is used by RangeSlider because it doesn't assign value
-  return refs.map((ref) => ref.current ? ref.current.value || ref.current.getAttribute("aria-valuenow") : null);
+  return refs.map((ref) => ref.current.value || ref.current.getAttribute("aria-valuenow"));
 }
 
 /**

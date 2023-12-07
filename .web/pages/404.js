@@ -2,10 +2,9 @@ import { Fragment, useContext, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { ColorModeContext, EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
-import range from "/utils/helpers/range.js"
 import "focus-visible/dist/focus-visible"
-import { useClientSideRouting } from "/utils/client_side_routing"
 import Error from "next/error"
+import { useClientSideRouting } from "/utils/client_side_routing"
 import NextHead from "next/head"
 
 

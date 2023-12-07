@@ -71,13 +71,14 @@ def header() -> rx.Component:
                # f"{experience()}+",
                 "4+"," años de experiencia"
             ),
+#            rx.spacer(),            
             rx.spacer(),
-            info_text(
-                "100+", "aplicaciones creadas"
-            ),
-            rx.spacer(),
-            info_text(
-                "1M+", "seguidores"
+            rx.link(
+                "Descargar CV",
+                href="files/cv.pdf",
+                font_size=Size.MEDIUM.value,
+                font_weight="bold",
+                color=Color.PRIMARY.value
             ),
             width="100%"
         ),
@@ -88,7 +89,8 @@ def header() -> rx.Component:
                     a través de la implementación de sistemas que ayuden al comercio local a tener un mayor impacto.
                     Aquí podrás encontrar todos mis enlaces de interés. ¡Bienvenid@!""",
                     font_size=Size.DEFAULT.value,
-                    color=TextColor.BODY.value
+                    color=TextColor.BODY.value,
+                    text_align="justify"
                 ),
         spacing=Size.BIG.value,     
         align_items="start"                
